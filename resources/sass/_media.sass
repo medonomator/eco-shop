@@ -1,0 +1,190 @@
+
+ /*==========  Desktop First  ==========*/
+
+ /* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px)
+  // header
+  .wrapper
+    max-width: 100%
+    .about
+      margin: 0 15px
+      .card-container
+        margin: 0 10px
+
+  h1, .header-text
+    padding-left: 10px
+
+  .bg
+    height: 105vh
+
+  .aphorisms-container-main
+    .aphorisms-item
+      margin-left: 10px
+
+@media only screen and (max-width : 992px)
+  .bg
+    height: 130vh
+
+  .aphorisms-container-main
+    margin-top: 70px
+    h2
+      padding-bottom: 40px
+    .aphorisms-item
+      margin-right: 10px
+      margin-left: 10px
+
+  .more-button-container
+    margin-right: 10px
+    margin-top: 20px
+
+  .aphorisms-item-body p
+    margin-right: 0
+
+@media only screen and (max-width : 768px)
+
+  .more-button-aphorism
+    margin-right: 30px
+
+  .h1-contacts
+    width: 100%
+  .main-menu
+    display: none
+
+  .hamburger
+    display: flex
+    flex-direction: column
+    margin: auto
+
+  .header
+    flex-direction: column
+    align-items: center
+
+  .logo
+    margin-bottom: 40px
+
+  h1
+    text-align: center
+    padding-top: 35px
+
+  .header-text
+    margin-right: 50px
+
+  .main-menu
+    ul
+      flex-direction: column
+      text-align: center
+      margin-top: 20px
+    li
+      margin-right: 0!important
+      padding-top: 8px
+
+  .regular-page
+    flex-direction: column-reverse
+    margin-top: 100px
+    select
+      width: 100%!important
+
+  .filter-block
+    width: 97%
+    margin: 0 10px
+    margin-bottom: 40px
+
+  .shuffle-button-wrapper
+    display: flex
+    justify-content: center
+
+  .aphorisms-item
+    margin: 0 10px
+    margin-bottom: 24px
+
+  .footer .wrapper
+    flex-direction: column
+    align-items: center
+
+    .subscribe
+      margin-bottom: 20px
+      margin-top: 20px
+
+  .h1-contacts
+    font-size: 30px
+
+  .top-arrow
+    right: calc(50% - 265px)
+    bottom: 30px
+    img
+      width: 50px
+
+@media only screen and (max-width : 560px)
+  .top-arrow
+    right: calc(50% - 200px)!important
+  .header
+    flex-direction: row
+    align-items: flex-start
+  h1
+    font-size: 22px
+    padding-top: 0
+  .logo
+    margin-bottom: 30px
+    margin-left: 10px
+  .hamburger
+    z-index: 100
+    margin-right: 20px
+    margin-top: 5px
+
+  .main-menu-active
+    position: absolute
+    right: 0
+    top: 80px
+    background: white
+    border-radius: 10px 0pc 0px 20px
+    ul
+      margin-top: 0
+      padding-left: 15px
+      margin-right: 6px
+      padding-bottom: 7px
+    li
+      text-align: right
+    a
+      color: #0d0b53!important
+
+  @keyframes main-menu-active
+    0%
+      margin-right: -50px
+
+    100%
+      margin-right: 0px
+
+@media only screen and (max-width : 480px)
+  .top-arrow
+    right: calc(50% - 150px)!important
+  .h1-contacts
+    font-size: 18px
+
+  .bg
+    height: 220vh
+
+  .filter-block
+    width: 94%
+@media only screen and (max-width : 320px)
+ /**/
+
+ /*==========  Mobile First  ==========*/
+
+ /* Custom, iPhone Retina */
+@media only screen and (min-width : 320px)
+ /**/
+
+ /* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px)
+ /**/
+
+@media only screen and (min-width : 768px)
+  .main-menu
+    display: block!important
+
+@media only screen and (min-width : 992px)
+ /**/
+
+ /* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px)
+ /**/

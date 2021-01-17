@@ -1,0 +1,224 @@
+@import "fonts"
+@import "libs"
+@import "vars"
+
+*
+	-webkit-box-sizing: border-box
+	-moz-box-sizing: border-box
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	&:before, &:after
+		-webkit-box-sizing: border-box
+		-moz-box-sizing: border-box
+		box-sizing: border-box
+
+*::-webkit-input-placeholder
+	color: #666
+	opacity: 1
+
+*:-moz-placeholder
+	color: #666
+	opacity: 1
+
+*::-moz-placeholder
+	color: #666
+	opacity: 1
+
+*:-ms-input-placeholder
+	color: #666
+	opacity: 1
+
+body input:focus:required:invalid,
+body textarea:focus:required:invalid
+	color: #666
+body input:required:valid,
+body textarea:required:valid
+	color: #666
+
+body
+	font-size: 16px
+	min-width: 320px
+	position: relative
+	line-height: 1.65
+	overflow-x: hidden
+	color: #222
+	font-weight: 400!important
+	font-family: 'PTSansCaption', sans-serif!important
+img
+	width: 100%
+li
+	list-style-type: none
+p
+	font-size: 18px
+hr
+	margin-bottom: 30px
+	color: #999
+
+.hover-color
+	color: $accent
+	transition: all .3s ease
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+.text-center
+	text-align: center
+
+::selection
+	background-color: $accent
+	color: #fff
+
+.wrapper
+	margin-right: auto
+	margin-left: auto
+	max-width: 1170px
+	position: relative
+.h2
+	text-transform: uppercase
+	text-align: center
+	margin: 40px 0
+
+.h3,.h3-low
+	font-size: 26px
+	padding-bottom: 5px
+	color: #666
+
+.h3-low
+	display: none
+	text-align: center
+	margin-bottom: 10px
+
+// header
+.header
+	display: flex
+	justify-content: space-between
+	.logo
+		width: 280px
+		margin-top: 40px
+	.sky
+		width: 250px
+		margin-top: 20px
+		margin-left: 40px
+	.soon
+		width: 250px
+		margin-top: -50px
+
+a
+	color: white
+
+.top-panel
+	display: flex
+	margin-top: 20px
+	align-items: center
+
+	.main-menu
+		margin-left: auto
+		margin-bottom: 30px
+		margin-top: 35px
+		ul
+			display: flex
+			justify-content: center
+		li
+			margin-right: 30px
+			text-transform: uppercase
+			// font-family: 'Lora', sans-serif
+			font-weight: 600
+			font-size: 15px
+		a
+			color: #444
+			&:hover
+				@extend .hover-color
+
+	.call-us
+		display: flex
+		.icon
+			width: 45px
+			margin-right: 10px
+
+.main-content
+	min-height: 100vh
+
+.categories
+	background: #6dac23
+	padding: 12px 12px
+
+.products
+	margin-top: 50px
+	display: flex
+	flex-flow: wrap
+	justify-content: center
+	
+	&__item
+		width: 300px
+		margin: 10px
+		box-shadow: 0 0 10px rgba(0,0,0,0.5)
+		border-radius: 4px
+		padding-bottom: 15px	
+	
+		img
+			transition: all .3s ease
+		&:hover
+			img
+				transform: scale(1.05)
+
+		&-img
+			margin: auto
+			width: 200px
+
+		&-title
+			text-align: center
+			padding: 10px 0
+			font-weight: 600
+			color: #333
+
+		&-price
+			text-align: center
+			padding-bottom: 10px
+			color: #333
+
+			b
+				color: green
+
+.to-cart
+	border: none
+	margin: auto
+	background: #6dac23
+	color: white
+	padding: 8px 18px
+	border-radius: 4px
+	cursor: pointer
+	display: block
+	transition: all .3s ease
+	&:hover
+		background: green
+
+.links
+	a
+		color: #333
+
+.pagination
+	margin-top: 50px
+	display: flex
+	justify-content: center
+	margin-bottom: 50px
+
+	li
+		border: 1px solid
+		padding: 3px 10px	
+		margin: 2px
+
+.footer
+	background: #363636
+	height: 200px
+	color: white
+
+.sign-in,.entered
+	margin-left: 30px
+	a
+		color: #333
+		display: block
+
+@import "media" // Всегда в конце
