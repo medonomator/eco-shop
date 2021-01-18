@@ -35,11 +35,11 @@
         <meta name="msapplication-navbutton-color" content="#000" />
         <!-- iOS Safari -->
         <meta name="apple-mobile-web-app-status-bar-style" content="#000" />
-
         <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" />
         <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        @stack('styles')
     </head>
 
     <body>
@@ -70,18 +70,33 @@
                     </div>
                 </div>
 
-                @if(Auth::guard('web')->check())
+                @auth('web')
                     <div class="entered">
-                        <img src="avatar" alt="alt">
+                        <div class="default-photo">
+                            <img src="{{ asset('img/default-photo.png') }}" alt="alt">
+                        </div>
                         <p>{{ Auth::user()->name }}</p>
-                        <a href="/logout">Выйти</a>
-                        <a href="/personal">Личный кабинет</a>
+                        <i class="fa fa-caret-down" aria-hidden="true"></i>
+                        
+                        <div class="hidden-block">
+                            <a href="/logout">Выйти</a>
+                            <a href="/personal">Личный кабинет</a>
+                        </div>
                     </div>
-                @else
-                    <div class="sign-in">
-                        <a href="/login">Войти</a>
-                        <a href="/register">Регистрация</a>
+                @endauth
+                @guest('web')
+                <div class="sign-in">
+                    <a href="/login">Войти</a>
+                    <a href="/register">Регистрация</a>
+                </div>
+                @endguest
+
+                @hasSection('product')
+                    <div class="pull-right">
+                        @yield('product')
                     </div>
+
+                    <div class="clearfix"></div>
                 @endif
             </div>
 
@@ -116,6 +131,21 @@
             if ( window.history.replaceState ) {
               window.history.replaceState( null, null, window.location.href );
             }
-            </script>
+
+            $('.fa-caret-down').click(event => {
+                $('.hidden-block').toggle()
+            })
+
+            document.addEventListener('click', event => {
+                if(!event.target.closest('.fa-caret-down') || 
+                   event.target.closest('.hidden-block')) {
+                    $('.hidden-block').hide();
+                }
+            })
+        </script>
+
+
+
+
     </body>
 </html>

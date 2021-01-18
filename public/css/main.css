@@ -409,12 +409,56 @@ a {
 .sign-in,
 .entered {
   margin-left: 30px;
+  position: relative;
 }
 
 .sign-in a,
 .entered a {
   color: #333;
   display: block;
+}
+
+.sign-in p,
+.entered p {
+  font-size: 15px;
+}
+
+.sign-in .fa-caret-down,
+.entered .fa-caret-down {
+  position: absolute;
+  right: -20px;
+  top: 70px;
+  cursor: pointer;
+}
+
+.default-photo {
+  width: 50px;
+  position: relative;
+  left: 38px;
+  margin-top: 10px;
+}
+
+.hidden-block {
+  position: absolute;
+  right: -20px;
+  top: 90px;
+  background: white;
+  border: 1px solid silver;
+  width: 200px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: none;
+  z-index: 100;
+}
+
+.hidden-block a {
+  font-weight: 400;
+  padding-left: 10px;
+  transition: all 0.3 ease;
+}
+
+.hidden-block a:hover {
+  color: #6dac23;
 }
 
 /*==========  Desktop First  ==========*/

@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Blade;   
+use App\View\Components\Alert;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,5 +27,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('key', 'value');
+        Blade::component('package-alert', Alert::class);
+
+        Blade::directive('hello', function ($expression) {
+            return "<?php echo 'Hello ' . {$expression}; ?>";
+        });
     }
 }
