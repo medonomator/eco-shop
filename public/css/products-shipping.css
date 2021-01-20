@@ -1,0 +1,44 @@
+.products-shipping {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+.products-shipping__item {
+  display: flex;
+  border-bottom: 1px solid;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.products-shipping__item-title {
+  width: 350px;
+}
+
+.products-shipping__item-img {
+  width: 100px;
+}
+
+.products-shipping a {
+  display: flex;
+  align-items: center;
+}
+
+.products-shipping p {
+  padding-left: 50px;
+}
+
+.fa-trash-o {
+  position: absolute;
+  right: 20px;
+  top: 30px;
+  color: #a51d1d;
+  font-size: 30px;
+  transition: all 0.3s ease;
+}
+
+.fa-trash-o:hover {
+  color: #e42a2a;
+  cursor: pointer;
+}
+

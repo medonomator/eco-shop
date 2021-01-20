@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ShoppingCart;
 
 // Artisan::call('migrate');
 /*
@@ -18,7 +19,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::get('/', [ProductController::class, 'index']);
+Route::get('/', [ProductController::class, 'index'])->name('home');
 
 Route::get('/product/{id}', [ProductController::class, 'show']);
 
@@ -38,8 +39,17 @@ Route::get('/personal', function () {
     return view('personal');
 });
 
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/shopping-cart', [ShoppingCart::class, 'getProductsForShippingCart']);
+    Route::get('/add-shipping-cart/{goodId}/{quantity}', [ShoppingCart::class, 'addShippingCart']);    
+    Route::get('/delete-item-shipping-cart/{goodId}', [ShoppingCart::class, 'deleteItem']);    
+});
+
 Route::get('/login', function () {
-    return view('auth.login');
+    if (!auth()->user()) {
+        return view('auth.login');
+    }
+    return redirect()->route('home'); 
 })->name('login');
 
 Route::get('/register', function () {

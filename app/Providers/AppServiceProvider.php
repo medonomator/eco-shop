@@ -27,10 +27,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::share('key', 'value');
-        Blade::component('package-alert', Alert::class);
-
-        Blade::directive('hello', function ($expression) {
-            return "<?php echo 'Hello ' . {$expression}; ?>";
-        });
     }
 }

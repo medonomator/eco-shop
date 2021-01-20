@@ -55,6 +55,12 @@ hr
 	margin-bottom: 30px
 	color: #999
 
+a 
+	color: #333!important
+	transition: all .3s ease
+	&:hover
+		color: #777!important
+
 .hover-color
 	color: $accent
 	transition: all .3s ease
@@ -227,20 +233,20 @@ a
 	
 	.fa-caret-down
 		position: absolute 
-		right: -20px
-		top: 70px
+		right: -18px
+		top: 51px
 		cursor: pointer
 
 .default-photo
-	width: 50px
+	width: 30px
 	position: relative
-	left: 38px	
+	left: 50px	
 	margin-top: 10px
 
 .hidden-block
 	position: absolute
 	right: -20px
-	top: 90px
+	top: 79px
 	background: white
 	border: 1px solid silver
 	width: 200px
@@ -256,5 +262,23 @@ a
 		&:hover
 			color: #6dac23	
 			
+.shopping-cart
+	width: 35px
+	margin-left: 25px
+	margin-top: 8px
+	cursor: pointer
+	position: relative
+
+	.quantity
+		background: #e8160a
+		color: white
+		position: absolute
+		top: -15px
+		right: -15px
+		width: 25px
+		height: 25px
+		text-align: center
+		border-radius: 5em
+
 
 @import "media" // Всегда в конце

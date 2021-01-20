@@ -70,6 +70,13 @@
                     </div>
                 </div>
 
+                <a href="shopping-cart" class="shopping-cart">
+                    <img src="{{ asset('img/shopping-cart.png') }}" alt="alt"> 
+                    @auth('web')
+                        <div class="quantity">0</div>
+                    @endauth
+                </a>
+
                 @auth('web')
                     <div class="entered">
                         <div class="default-photo">
@@ -132,6 +139,8 @@
               window.history.replaceState( null, null, window.location.href );
             }
 
+            const MAIN_URL = "{{env('APP_URL')}}"
+        
             $('.fa-caret-down').click(event => {
                 $('.hidden-block').toggle()
             })
@@ -142,10 +151,35 @@
                     $('.hidden-block').hide();
                 }
             })
+
+            $('.to-cart').click(e => {
+                const goodId = e.target.getAttribute('data');
+
+                (async() => {
+                    const res = await fetch(`${MAIN_URL}/add-shipping-cart/${goodId}/1`)
+
+                    if(/login/.test(res.url)) {
+                        var url= `${MAIN_URL}/login`;
+                        window.location = url; 
+                    } else {
+                        // increment shipping cart
+                    }
+                })();
+             }) 
+
+             $('.fa-trash-o').click(e => {
+                const goodId = e.target.getAttribute('data');
+                
+
+                (async() => {
+                    try {
+                        await fetch(`${MAIN_URL}/delete-item-shipping-cart/${goodId}`)
+
+                    } catch (error) {
+                        console.log(error);   
+                    }
+                })();
+             })
         </script>
-
-
-
-
     </body>
 </html>
