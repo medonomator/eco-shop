@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;   
 use App\View\Components\Alert;
+use App\Models\ShoppingCart;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::share('key', 'value');
+        view()->composer('*', function ($view) {
+            $shopCartsCount = ShoppingCart::where('client_id', auth('web')->user()->id)->count();
+            View::share('shopCartsCount', $shopCartsCount);
+        });
+        
+        // \DB::listen(function ($query) {
+        //     dump($query->sql);
+        //     // dump($query->bindings);
+        // });
     }
 }

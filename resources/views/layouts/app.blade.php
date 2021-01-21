@@ -73,7 +73,7 @@
                 <a href="shopping-cart" class="shopping-cart">
                     <img src="{{ asset('img/shopping-cart.png') }}" alt="alt"> 
                     @auth('web')
-                        <div class="quantity">0</div>
+                        <div class="quantity">{{ $shopCartsCount }}</div>
                     @endauth
                 </a>
 
@@ -156,30 +156,31 @@
                 const goodId = e.target.getAttribute('data');
 
                 (async() => {
-                    const res = await fetch(`${MAIN_URL}/add-shipping-cart/${goodId}/1`)
+                    const res = await fetch(`${MAIN_URL}/add-shopping-cart/${goodId}/1`)
 
                     if(/login/.test(res.url)) {
                         var url= `${MAIN_URL}/login`;
                         window.location = url; 
                     } else {
-                        // increment shipping cart
+                        const currentQuantiy = $('.quantity').text();
+                        $('.quantity').text(Number(currentQuantiy) + 1);
                     }
                 })();
              }) 
 
-             $('.fa-trash-o').click(e => {
-                const goodId = e.target.getAttribute('data');
+            //  $('.fa-trash-o').click(e => {
+            //     const goodId = e.target.getAttribute('data');
                 
 
-                (async() => {
-                    try {
-                        await fetch(`${MAIN_URL}/delete-item-shipping-cart/${goodId}`)
+            //     (async() => {
+            //         try {
+            //             await fetch(`${MAIN_URL}/delete-item-shopping-cart/${goodId}`)
 
-                    } catch (error) {
-                        console.log(error);   
-                    }
-                })();
-             })
+            //         } catch (error) {
+            //             console.log(error);   
+            //         }
+            //     })();
+            //  })
         </script>
     </body>
 </html>

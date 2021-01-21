@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\ShippingCart;
+use App\Models\ShoppingCart as ShoppingCartModel;
 
 class ShoppingCart extends Controller
 {
@@ -20,43 +20,41 @@ class ShoppingCart extends Controller
     }
 
     /**
-     * Display the products for Shipping Cart
+     * Display the products for Shopping Cart
      *
      * @return \Illuminate\Http\Response
      */
-    public function getProductsForShippingCart(Request $request)
+    public function getProductsForShoppingCart()
     {
-        $items = ShippingCart::where('client_id', $this->getUserId())->get();
-        
-        // return view('shopping-cart', [
-        //     'products' => Product::paginate(15)
-        // ]);
+        $shopCarts = ShoppingCartModel::where('client_id', $this->getUserId())->with('product')->get();
+        return view('shopping-cart', [
+            'shopCarts' => $shopCarts
+        ]);
     }
 
     /**
-     * Add good to shipping cart
+     * Add good to shopping cart
      *
      * @return \Illuminate\Http\Response
      */
-    public function addShippingCart(Request $request)
+    public function addShoppingCart(Request $request)
     {
-        ShippingCart::create([
+        ShoppingCartModel::create([
             'client_id' => $this->getUserId(),
             'product_id' => $request->goodId,
             'quantity' => $request->quantity
         ]);
-
         return 'ok';
     }
 
     /**
-     * Delete good from shipping cart
+     * Delete good from shopping cart
      *
      * @return \Illuminate\Http\Response
      */
     public function deleteItem(Request $request)
     {
-        ShippingCart::where('id',$request->goodId);
-        return 'ok';
+        ShoppingCartModel::destroy($request->goodId);
+        return $this->getProductsForShoppingCart();
     }
 }
