@@ -26,12 +26,14 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
+    { 
         view()->composer('*', function ($view) {
-            $shopCartsCount = ShoppingCart::where('client_id', auth('web')->user()->id)->count();
-            View::share('shopCartsCount', $shopCartsCount);
+            if(auth('web')->user()) {
+                $shopCartsCount = ShoppingCart::where('client_id', auth('web')->user()->id)->count();
+                View::share('shopCartsCount', $shopCartsCount);
+            }
         });
-        
+       
         // \DB::listen(function ($query) {
         //     dump($query->sql);
         //     // dump($query->bindings);

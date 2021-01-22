@@ -50,7 +50,6 @@
 .place-order,
 .clear-shopping-cart {
   border: none;
-  margin: auto;
   background: #6dac23;
   padding: 8px 18px;
   border-radius: 4px;
@@ -58,6 +57,7 @@
   display: block;
   color: white !important;
   transition: all 0.3s ease;
+  margin-bottom: 30px;
 }
 
 .place-order:hover,
@@ -68,9 +68,67 @@
 
 .clear-shopping-cart {
   background: #ac23a1;
+  position: absolute;
+  right: 0;
+  top: 20px;
 }
 
 .clear-shopping-cart:hover {
   background: #61195b;
+}
+
+.prepare-order h2 {
+  font-weight: 400;
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.prepare-order__top {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.prepare-order__top .payment,
+.prepare-order__top .delivery {
+  margin-right: 150px;
+}
+
+.prepare-order__top .payment h3,
+.prepare-order__top .delivery h3 {
+  margin-bottom: 10px;
+}
+
+.prepare-order .radio {
+  position: relative;
+  padding: 5px 0;
+}
+
+.prepare-order .radio label {
+  cursor: pointer;
+}
+
+.prepare-order .img {
+  position: absolute;
+  width: 30px;
+  top: 2px;
+  right: -60px;
+}
+
+.prepare-order .img-2 {
+  width: 40px;
+  top: 4px;
+  right: -69px;
+}
+
+.prepare-order .img-3 {
+  width: 60px;
+  top: 5px;
+  right: -88px;
+}
+
+.prepare-order .img-4 {
+  width: 100px;
+  top: -8px;
+  right: -125px;
 }
 

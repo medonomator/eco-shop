@@ -73,7 +73,7 @@
                 <a href="shopping-cart" class="shopping-cart">
                     <img src="{{ asset('img/shopping-cart.png') }}" alt="alt"> 
                     @auth('web')
-                        <div class="quantity">{{ $shopCartsCount }}</div>
+                        <div class="quantity">{{ $shopCartsCount ?? '0' }}</div>
                     @endauth
                 </a>
 

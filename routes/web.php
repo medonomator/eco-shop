@@ -43,6 +43,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/shopping-cart', [ShoppingCart::class, 'getProductsForShoppingCart']);
     Route::get('/add-shopping-cart/{goodId}/{quantity}', [ShoppingCart::class, 'addShoppingCart']);    
     Route::get('/delete-item-shopping-cart/{goodId}', [ShoppingCart::class, 'deleteItem']);    
+    Route::get('/clear-shopping-cart', [ShoppingCart::class, 'clearShoppingCart']);    
+    Route::post('/place-order', [ShoppingCart::class, 'placeOrder']);    
+    Route::get('/return-page', [ShoppingCart::class, 'returnPage']);    
 });
 
 Route::get('/login', function () {

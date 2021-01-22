@@ -20,7 +20,7 @@ class ShoppingCart extends Controller
     }
 
     /**
-     * Display the products for Shopping Cart
+     * Display the products for shopping Cart
      *
      * @return \Illuminate\Http\Response
      */
@@ -56,5 +56,42 @@ class ShoppingCart extends Controller
     {
         ShoppingCartModel::destroy($request->goodId);
         return $this->getProductsForShoppingCart();
+    }
+
+    /**
+     * Clear the shopping cart
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function clearShoppingCart()
+    {
+        ShoppingCartModel::query()->delete();
+        return $this->getProductsForShoppingCart();
+    }
+
+    /**
+     * Place order
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function placeOrder()
+    {
+        // Формирование номера заказа с данными
+        // перенаправить на страницу платежной системы данными о заказе
+        // и далее ждать возврата на returnPage
+        return 'placeOrder';
+    }
+
+    /**
+     * Return page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function returnPage()
+    {
+        // обработать ошибку если такая придет
+        // Если успешный ответ, тогда Сказать спасибо за заказ вываести номер заказа и сказать что
+        // можете отследить статус заказа в Личном кабинете
+        return 'returnPage';
     }
 }

@@ -324,6 +324,7 @@ a {
 
 .main-content {
   min-height: 100vh;
+  position: relative;
 }
 
 .categories {
