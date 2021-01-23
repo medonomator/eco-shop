@@ -148,10 +148,6 @@ a
 	min-height: 100vh
 	position: relative
 
-.categories
-	background: #6dac23
-	padding: 12px 12px
-
 .products
 	margin-top: 50px
 	display: flex
@@ -281,5 +277,40 @@ a
 		text-align: center
 		border-radius: 5em
 
+
+.categories
+	background: #6dac23
+	ul
+		display: flex
+		position: relative
+		cursor: pointer
+		li
+			position: relative
+		li > ul 
+			position: absolute
+			top: 66px
+			display: none
+			a
+				padding: 5px 10px
+				font-size: 15px
+
+		li:hover > ul
+			display: block
+			width: 250px  
+			background: #6dac23
+			z-index: 10
+
+	a
+		color: white!important
+		display: block
+	
+	a
+		padding: 20px 10px
+		
+
+	a:hover
+		background: white
+		color: #6dac23!important	
+	
 
 @import "media" // Всегда в конце

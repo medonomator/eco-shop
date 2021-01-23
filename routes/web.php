@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\NotesController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ShoppingCart;
+use App\Http\Controllers\CategoryController;
 
 // Artisan::call('migrate');
 /*
@@ -22,6 +23,7 @@ use App\Http\Controllers\ShoppingCart;
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
 Route::get('/product/{id}', [ProductController::class, 'show']);
+Route::get('/category/{categoryId}', [CategoryController::class, 'show']);
 
 Route::get('/articles', function () {
     return view('articles');

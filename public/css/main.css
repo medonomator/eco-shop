@@ -327,11 +327,6 @@ a {
   position: relative;
 }
 
-.categories {
-  background: #6dac23;
-  padding: 12px 12px;
-}
-
 .products {
   margin-top: 50px;
   display: flex;
@@ -489,6 +484,52 @@ a {
   height: 25px;
   text-align: center;
   border-radius: 5em;
+}
+
+.categories {
+  background: #6dac23;
+}
+
+.categories ul {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
+.categories ul li {
+  position: relative;
+}
+
+.categories ul li > ul {
+  position: absolute;
+  top: 66px;
+  display: none;
+}
+
+.categories ul li > ul a {
+  padding: 5px 10px;
+  font-size: 15px;
+}
+
+.categories ul li:hover > ul {
+  display: block;
+  width: 250px;
+  background: #6dac23;
+  z-index: 10;
+}
+
+.categories a {
+  color: white !important;
+  display: block;
+}
+
+.categories a {
+  padding: 20px 10px;
+}
+
+.categories a:hover {
+  background: white;
+  color: #6dac23 !important;
 }
 
 /*==========  Desktop First  ==========*/

@@ -31,7 +31,10 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             if(auth('web')->user()) {
                 $shopCartsCount = ShoppingCart::where('client_id', auth('web')->user()->id)->count();
+                $categoryRepository = new CategoryRepository;
+
                 View::share('shopCartsCount', $shopCartsCount);
+                View::share('categories', $categoryRepository->getTree());
             }
         });
        
@@ -39,9 +42,5 @@ class AppServiceProvider extends ServiceProvider
         //     dump($query->sql);
         //     // dump($query->bindings);
         // });
-        $this->app->bind('CategoryRepository', function($app)
-        {
-            return new CategoryRepository();
-        });
     }
 }

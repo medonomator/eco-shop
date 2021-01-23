@@ -1,23 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Product;
-use Illuminate\Http\Request;
-use App\Models\ShoppingCart;
 
-class ProductController extends Controller
+use Illuminate\Http\Request;
+
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('index', [
-            'products' => Product::paginate(15)
-        ]);
+        //
     }
 
     /**
@@ -44,23 +41,30 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Request $request)
     {
-        return view('product', [
-            'product' => Product::find($request->id)  
+        $products = [];
+        if($request->categoryId == 1) {
+            $products = Product::paginate(15);
+        } else {
+            $products = Product::where('category_id', $request->categoryId)->paginate(15);
+        }
+
+        return view('index', [
+            'products' => $products
         ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
     }
@@ -69,10 +73,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -80,10 +84,10 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
         //
     }

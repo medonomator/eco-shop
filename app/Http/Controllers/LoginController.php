@@ -20,7 +20,9 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if(auth('web')->attempt($credentials)) {
-            return view('index', ['products' => Product::paginate(15)]);
+            return view('index', [
+                'products' => Product::paginate(15)
+            ]);
         } 
         
         return redirect('login')->with('error', 'Invalid username or password');    
