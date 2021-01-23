@@ -2,11 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\PodcastProcessed;
+use App\Events\UserSubscribed;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Log;
 
-class SendPodcastNotification
+class EmailOWnerAboutSubscription
 {
     /**
      * Create the event listener.
@@ -21,11 +22,11 @@ class SendPodcastNotification
     /**
      * Handle the event.
      *
-     * @param  PodcastProcessed  $event
+     * @param  UserSubscribed  $event
      * @return void
      */
-    public function handle(PodcastProcessed $event)
+    public function handle(UserSubscribed $event)
     {
-        //
+        Log::info('Emailed owner about new user: ' . $event->user->email);
     }
 }

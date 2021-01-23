@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\OrderProduct;
 use App\Models\ShoppingCart as ShoppingCartModel;
 
 class ShoppingCart extends Controller
@@ -27,8 +29,19 @@ class ShoppingCart extends Controller
     public function getProductsForShoppingCart()
     {
         $shopCarts = ShoppingCartModel::where('client_id', $this->getUserId())->with('product')->get();
+
+        $amount = 0;
+        foreach($shopCarts as $item) {
+            if(empty($item->product->price)) {
+                $amount = $amount + $item->product->old_price;
+            } else {
+                $amount = $amount + $item->product->price;
+            }
+        }
+
         return view('shopping-cart', [
-            'shopCarts' => $shopCarts
+            'shopCarts' => $shopCarts,
+            'amount' => $amount
         ]);
     }
 
@@ -74,10 +87,34 @@ class ShoppingCart extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function placeOrder()
+    public function placeOrder(Request $request)
     {
-        // Формирование номера заказа с данными
-        // перенаправить на страницу платежной системы данными о заказе
+        $request->validate([
+            'amount' => 'required|max:255',
+            'payment' => 'required',
+            'delivery' => 'required',
+        ]);
+
+        $shopCarts = ShoppingCartModel::where('client_id', $this->getUserId())->with('product')->get();
+
+        $newOrder = Order::create([
+            'user_id' => $this->getUserId(),
+            'note' => "Test Order",
+            'sum' => $request->amount,
+            'currency' => 'rub'
+        ]);
+
+        foreach ($shopCarts as $item) {
+            OrderProduct::create([
+                'order_id' => $newOrder->id,
+                'product_id' => $item->product_id,
+                "qty" => 1,
+                "title" => 'Test title',
+                "price" =>  100
+            ]);
+        }
+
+        // перенаправить на страницу платежной системы c данными о заказе
         // и далее ждать возврата на returnPage
         return 'placeOrder';
     }

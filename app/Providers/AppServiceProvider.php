@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Blade;   
 use App\View\Components\Alert;
 use App\Models\ShoppingCart;
+use App\Repositories\CategoryRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -38,5 +39,9 @@ class AppServiceProvider extends ServiceProvider
         //     dump($query->sql);
         //     // dump($query->bindings);
         // });
+        $this->app->bind('CategoryRepository', function($app)
+        {
+            return new CategoryRepository();
+        });
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\ShoppingCart;
+use App\Repositories\CategoryRepository;
 
 class ProductController extends Controller
 {
@@ -13,10 +14,11 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, CategoryRepository $categoryRepository)
     {
         return view('index', [
-            'products' => Product::paginate(15)
+            'products' => Product::paginate(15),
+            'categories' => $categoryRepository->getTree()
         ]);
     }
 
@@ -47,9 +49,12 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show(Request $request , CategoryRepository $categoryRepository)
     {
-        return view('product', ['product' => Product::find($request->id)]);
+        return view('product', [
+            'product' => Product::find($request->id),
+            'categories' => $categoryRepository->getTree()
+        ]);
     }
 
     /**

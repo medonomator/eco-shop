@@ -40,7 +40,7 @@ Route::get('/personal', function () {
 });
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/shopping-cart', [ShoppingCart::class, 'getProductsForShoppingCart']);
+    Route::get('/shopping-cart', [ShoppingCart::class, 'getProductsForShoppingCart'])->name('shopping-cart');
     Route::get('/add-shopping-cart/{goodId}/{quantity}', [ShoppingCart::class, 'addShoppingCart']);    
     Route::get('/delete-item-shopping-cart/{goodId}', [ShoppingCart::class, 'deleteItem']);    
     Route::get('/clear-shopping-cart', [ShoppingCart::class, 'clearShoppingCart']);    

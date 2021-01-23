@@ -70,7 +70,7 @@
                     </div>
                 </div>
 
-                <a href="shopping-cart" class="shopping-cart">
+                <a href="{{ route('shopping-cart') }}" class="shopping-cart">
                     <img src="{{ asset('img/shopping-cart.png') }}" alt="alt"> 
                     @auth('web')
                         <div class="quantity">{{ $shopCartsCount ?? '0' }}</div>
@@ -117,7 +117,9 @@
 
         <div class="categories">
             <div class="wrapper">
-                <!-- 123 -->
+                @if(count($categories)) 
+                    @include('partial.categories', ['categories' => $categories])
+                @endif
             </div>
         </div>
 
@@ -130,10 +132,10 @@
                 Footer
             </div>
         </footer>
-        <script src="libs/jquery/jquery.min.js"></script>
+        <script src={{ asset('libs/jquery/jquery.min.js') }}></script>
         <!-- jQuery Modal -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-        <script src="js/common.js"></script>
+        <script src="{{ asset('js/common.js') }}"></script>
         <script>
             if ( window.history.replaceState ) {
               window.history.replaceState( null, null, window.location.href );
