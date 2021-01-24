@@ -17,6 +17,7 @@ class LoginController extends Controller
      */
     public function authenticate(Request $request)
     {
+
         $credentials = $request->only('email', 'password');
 
         if(auth('web')->attempt($credentials)) {
@@ -26,35 +27,6 @@ class LoginController extends Controller
         } 
         
         return redirect('login')->with('error', 'Invalid username or password');    
-    }
-
-    /**
-     * Authenticate the user of the application.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function adminAuthenticate(Request $request)
-    {
-        $credentials = $request->only('email', 'password');
-
-        if(auth('admin')->attempt($credentials)) {
-            return view('admin.index');
-        } else {
-            return redirect('login')->with('error', 'Invalid username or password');
-        }    
-    }
-
-    /**
-     * Log the user out of the application.
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function adminLogout(Request $request)
-    {   
-        Auth::guard('admin')->logout();
-        $sessionKey = auth()->guard('admin')->getName();
-        $request->session()->forget($sessionKey);
-        return redirect('admin-login');
     }
 
     /**

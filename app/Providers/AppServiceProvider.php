@@ -31,11 +31,11 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('*', function ($view) {
             if(auth('web')->user()) {
                 $shopCartsCount = ShoppingCart::where('client_id', auth('web')->user()->id)->count();
-                $categoryRepository = new CategoryRepository;
-
                 View::share('shopCartsCount', $shopCartsCount);
-                View::share('categories', $categoryRepository->getTree());
-            }
+            } 
+
+            $categoryRepository = new CategoryRepository;
+            View::share('categories', $categoryRepository->getTree());
         });
        
         // \DB::listen(function ($query) {

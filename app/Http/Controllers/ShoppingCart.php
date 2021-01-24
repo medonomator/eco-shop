@@ -114,9 +114,10 @@ class ShoppingCart extends Controller
             ]);
         }
 
+        ShoppingCartModel::where('client_id', $this->getUserId())->with('product')->delete();
         // перенаправить на страницу платежной системы c данными о заказе
         // и далее ждать возврата на returnPage
-        return 'placeOrder';
+        return redirect('/personal');
     }
 
     /**

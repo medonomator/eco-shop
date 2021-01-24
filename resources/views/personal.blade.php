@@ -1,5 +1,8 @@
 @extends('layouts.app') @section('content')
 
-<h1>Personal Page</h1>
+<div class="top">
+  <h1>Личный кабинет</h1> 
+  
+</div>
 
 @endsection

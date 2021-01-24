@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\OrderProduct;
 
 class Order extends Model
 {
@@ -20,4 +21,12 @@ class Order extends Model
         "sum",
         "currency"
     ];
+
+    /**
+     * Get the product for the Shipping Cart.
+     */
+    public function orderProduct()
+    {
+        return $this->hasMany(OrderProduct::class, 'order_id');
+    }
 }

@@ -19377,17 +19377,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/sass/categories.scss":
-/*!****************************************!*\
-  !*** ./resources/sass/categories.scss ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\nModuleBuildError: Module build failed (from ./node_modules/sass-loader/dist/cjs.js):\nError: ENOENT: no such file or directory, open '/home/socket/eco-shop/resources/sass/categories.scss'\n    at /home/socket/eco-shop/node_modules/webpack/lib/NormalModule.js:316:20\n    at /home/socket/eco-shop/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /home/socket/eco-shop/node_modules/loader-runner/lib/LoaderRunner.js:203:19\n    at /home/socket/eco-shop/node_modules/enhanced-resolve/lib/CachedInputFileSystem.js:85:15\n    at processTicksAndRejections (internal/process/task_queues.js:79:11)");
-
-/***/ }),
-
 /***/ "./resources/sass/main.sass":
 /*!**********************************!*\
   !*** ./resources/sass/main.sass ***!
@@ -19422,9 +19411,9 @@ throw new Error("Module build failed (from ./node_modules/css-loader/index.js):\
 /***/ }),
 
 /***/ 0:
-/*!*************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/admin.sass ./resources/sass/main.sass ./resources/sass/product.sass ./resources/sass/products-shipping.sass ./resources/sass/categories.scss ***!
-  \*************************************************************************************************************************************************************************************************/
+/*!****************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/admin.sass ./resources/sass/main.sass ./resources/sass/product.sass ./resources/sass/products-shipping.sass ***!
+  \****************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19432,8 +19421,7 @@ __webpack_require__(/*! /home/socket/eco-shop/resources/js/app.js */"./resources
 __webpack_require__(/*! /home/socket/eco-shop/resources/sass/admin.sass */"./resources/sass/admin.sass");
 __webpack_require__(/*! /home/socket/eco-shop/resources/sass/main.sass */"./resources/sass/main.sass");
 __webpack_require__(/*! /home/socket/eco-shop/resources/sass/product.sass */"./resources/sass/product.sass");
-__webpack_require__(/*! /home/socket/eco-shop/resources/sass/products-shipping.sass */"./resources/sass/products-shipping.sass");
-module.exports = __webpack_require__(/*! /home/socket/eco-shop/resources/sass/categories.scss */"./resources/sass/categories.scss");
+module.exports = __webpack_require__(/*! /home/socket/eco-shop/resources/sass/products-shipping.sass */"./resources/sass/products-shipping.sass");
 
 
 /***/ })

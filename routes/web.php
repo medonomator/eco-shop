@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ShoppingCart;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PerosonalPageController;
 
 // Artisan::call('migrate');
 /*
@@ -37,9 +38,7 @@ Route::get('/contacts', function () {
     return view('contacts');
 });
 
-Route::get('/personal', function () {
-    return view('personal');
-});
+Route::get('/personal', [PerosonalPageController::class, 'index']);
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/shopping-cart', [ShoppingCart::class, 'getProductsForShoppingCart'])->name('shopping-cart');
@@ -66,11 +65,14 @@ Route::post('/register', [LoginController::class, 'clientRegister']);
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/admin-login', function () {
+    if (Auth::guard('admin')->check()) {
+        return view('admin.index');
+    }
     return view('auth.admin-login');
 })->name('admin-login');
 
-Route::post('/admin-login', [LoginController::class, 'adminAuthenticate']);
-Route::get('/admin-logout', [LoginController::class, 'adminLogout'])->name('admin-logout');
+Route::post('/admin-login', [AdminController::class, 'authenticate']);
+Route::get('/admin-logout', [AdminController::class, 'adminLogout'])->name('admin-logout');
 
 
 Route::get('/admin', [AdminController::class, 'index']);
