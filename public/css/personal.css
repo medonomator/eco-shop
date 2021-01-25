@@ -24,16 +24,30 @@
   margin-top: 30px;
 }
 
-.orders {
+.orders ul {
+  display: flex;
   text-transform: capitalize;
 }
 
 .orders li {
   display: flex;
+  padding: 10px;
 }
 
-.orders div {
-  padding: 10px;
+.orders li:nth-child(1) {
+  width: 50px;
+}
+
+.orders li:nth-child(2) {
+  width: 150px;
+}
+
+.orders li:nth-child(3) {
+  width: 150px;
+}
+
+.orders li:nth-child(4) {
+  width: 200px;
 }
 
 .orders__status {

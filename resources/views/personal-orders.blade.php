@@ -12,9 +12,17 @@
 
 <div class="personal-order">
     <h2>Заказы</h2>
-    <ul class="orders">
+
+    <div class="orders">
+      <ul class=orders-header>
+        <li>#</li>
+        <li>Note</li>
+        <li>Сумма заказа</li>
+        <li>Статус</li>
+        <li>Дата создания</li>
+      </ul>
         @each('partial.orders', $orders, 'order')
-    </ul>
+    </div>
 </div>
 
 @endsection

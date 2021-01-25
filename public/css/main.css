@@ -212,6 +212,10 @@ a:hover {
   text-decoration: none !important;
 }
 
+p {
+  margin-bottom: 0 !important;
+}
+
 .hover-color,
 .top-panel .main-menu a:hover {
   color: #b17c9e;
@@ -436,7 +440,7 @@ a {
 .entered .fa-caret-down {
   position: absolute;
   right: -18px;
-  top: 51px;
+  top: 43px;
   cursor: pointer;
 }
 
