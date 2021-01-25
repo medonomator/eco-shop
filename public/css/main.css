@@ -208,6 +208,10 @@ a:hover {
   color: #777 !important;
 }
 
+a:hover {
+  text-decoration: none !important;
+}
+
 .hover-color,
 .top-panel .main-menu a:hover {
   color: #b17c9e;
@@ -502,7 +506,7 @@ a {
 
 .categories ul li > ul {
   position: absolute;
-  top: 66px;
+  top: 64px;
   display: none;
 }
 

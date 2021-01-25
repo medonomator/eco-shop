@@ -37,6 +37,10 @@ class AppServiceProvider extends ServiceProvider
             $categoryRepository = new CategoryRepository;
             View::share('categories', $categoryRepository->getTree());
         });
+
+        Blade::directive('datetime', function ($expression) {
+            return "<?php echo ($expression)->format('d-m-Y H:i'); ?>";
+        });
        
         // \DB::listen(function ($query) {
         //     dump($query->sql);

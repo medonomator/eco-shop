@@ -1,0 +1,72 @@
+.personal-top {
+  display: inline-flex;
+}
+
+.personal-top a {
+  border: none;
+  margin: auto;
+  background: #6dac23;
+  color: white !important;
+  padding: 8px 18px;
+  margin-left: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.personal-top a:hover {
+  background: green;
+  color: white !important;
+}
+
+.personal-order h2 {
+  margin-top: 30px;
+}
+
+.orders {
+  text-transform: capitalize;
+}
+
+.orders li {
+  display: flex;
+}
+
+.orders div {
+  padding: 10px;
+}
+
+.orders__status {
+  position: relative;
+}
+
+.orders__status::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  width: 88%;
+  left: 10px;
+  height: 2px;
+  background: green;
+}
+
+.orders__cancel {
+  position: relative;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  border: none;
+  background: #6dac23;
+  color: white !important;
+  padding: 8px 18px;
+  margin-left: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.orders__cancel:hover {
+  background: green;
+  color: white !important;
+}
+

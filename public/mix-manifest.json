@@ -3,5 +3,6 @@
     "/css/admin.css": "/css/admin.css",
     "/css/main.css": "/css/main.css",
     "/css/product.css": "/css/product.css",
-    "/css/products-shipping.css": "/css/products-shipping.css"
+    "/css/products-shipping.css": "/css/products-shipping.css",
+    "/css/personal.css": "/css/personal.css"
 }

@@ -15,7 +15,8 @@ mix.js("resources/js/app.js", "public/js")
     .sass("resources/sass/admin.sass", "public/css/admin.css")
     .sass("resources/sass/main.sass", "public/css/main.css")
     .sass("resources/sass/product.sass", "public/css/product.css")
-    .sass("resources/sass/products-shipping.sass", "public/css/products-shipping.css");
+    .sass("resources/sass/products-shipping.sass", "public/css/products-shipping.css")
+    .sass("resources/sass/personal.sass", "public/css/personal.css");
     
 mix.browserSync({
     proxy: "http://localhost:8000/"

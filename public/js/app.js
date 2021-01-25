@@ -19388,6 +19388,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/personal.sass":
+/*!**************************************!*\
+  !*** ./resources/sass/personal.sass ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/product.sass":
 /*!*************************************!*\
   !*** ./resources/sass/product.sass ***!
@@ -19411,9 +19422,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ }),
 
 /***/ 0:
-/*!****************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/admin.sass ./resources/sass/main.sass ./resources/sass/product.sass ./resources/sass/products-shipping.sass ***!
-  \****************************************************************************************************************************************************************/
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/admin.sass ./resources/sass/main.sass ./resources/sass/product.sass ./resources/sass/products-shipping.sass ./resources/sass/personal.sass ***!
+  \***********************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -19421,7 +19432,8 @@ __webpack_require__(/*! /home/socket/eco-shop/resources/js/app.js */"./resources
 __webpack_require__(/*! /home/socket/eco-shop/resources/sass/admin.sass */"./resources/sass/admin.sass");
 __webpack_require__(/*! /home/socket/eco-shop/resources/sass/main.sass */"./resources/sass/main.sass");
 __webpack_require__(/*! /home/socket/eco-shop/resources/sass/product.sass */"./resources/sass/product.sass");
-module.exports = __webpack_require__(/*! /home/socket/eco-shop/resources/sass/products-shipping.sass */"./resources/sass/products-shipping.sass");
+__webpack_require__(/*! /home/socket/eco-shop/resources/sass/products-shipping.sass */"./resources/sass/products-shipping.sass");
+module.exports = __webpack_require__(/*! /home/socket/eco-shop/resources/sass/personal.sass */"./resources/sass/personal.sass");
 
 
 /***/ })

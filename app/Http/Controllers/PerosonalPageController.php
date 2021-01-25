@@ -15,9 +15,20 @@ class PerosonalPageController extends Controller
      */
     public function index(Request $request)
     {
+        
+        return view('personal');
+    }
+
+    /**
+     * Display personal ot the orders.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showOrders(Request $request)
+    {
         $orders = Order::where('user_id', auth('web')->user()->id)->with('orderProduct')->get();
 
-        return view('personal', [
+        return view('personal-orders', [
             'orders' => $orders 
         ]);
     }
