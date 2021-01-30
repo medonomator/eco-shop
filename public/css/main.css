@@ -293,6 +293,23 @@ a {
   color: white;
 }
 
+.main-button {
+  border: none;
+  background: #6dac23;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  color: white !important;
+  transition: all 0.3s ease;
+  margin-bottom: 30px;
+}
+
+.main-button:hover {
+  background: green;
+  color: white !important;
+}
+
 .top-panel {
   display: flex;
   margin-top: 20px;
@@ -333,6 +350,7 @@ a {
 .main-content {
   min-height: 100vh;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .products {
@@ -538,6 +556,12 @@ a {
 .categories a:hover {
   background: white;
   color: #6dac23 !important;
+}
+
+.page-not-found {
+  text-align: center;
+  margin-top: 100px;
+  font-weight: 600;
 }
 
 /*==========  Desktop First  ==========*/

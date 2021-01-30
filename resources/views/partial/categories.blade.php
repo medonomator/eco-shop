@@ -4,7 +4,7 @@
             @php
                 $categoryId = $category['id'];
             @endphp
-            <a href="{{ url("/category/$categoryId") }}">{{ $category['title'] }}</a>
+            <a href="{{ route('categoryById', $categoryId) }}">{{ $category['title'] }}</a>
             @if(count($category['children']))
                 @include('partial.categories', ['categories' => $category['children']])
             @endif

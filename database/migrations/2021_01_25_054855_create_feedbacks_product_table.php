@@ -14,8 +14,22 @@ class CreateFeedbacksProductTable extends Migration
     public function up()
     {
         Schema::create('feedbacks_product', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id')->unsigned();
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('product_id');
+            $table->string('feedback');
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('client_id')
+                ->references('id')->on('clients')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('product_id')
+                ->references('id')->on('products')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

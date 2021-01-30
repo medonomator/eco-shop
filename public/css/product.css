@@ -21,6 +21,7 @@
 
 .card-product__right {
   margin-left: 50px;
+  font-size: 20px;
 }
 
 .card-product__right-title {
@@ -31,5 +32,63 @@
 
 .product-reviews {
   margin-top: 40px;
+}
+
+.not-review {
+  font-size: 20px;
+  margin-top: 40px;
+  padding-bottom: 40px;
+}
+
+.send-review-area {
+  margin-bottom: 30px;
+}
+
+.feedbacks {
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.feedbacks__avatar {
+  width: 200px;
+}
+
+.feedbacks__avatar-img {
+  width: 50px;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+.feedbacks__avatar-name {
+  text-align: center;
+}
+
+.feedbacks__content {
+  flex: 1;
+  background: #dddddd;
+  padding: 25px 10px;
+  border-radius: 4px;
+  margin: 20px;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.feedbacks-item {
+  display: flex;
+  align-items: center;
+  flex-flow: wrap;
+}
+
+.delete-feedback {
+  position: absolute;
+  right: 20px;
+  bottom: -43px;
+  padding: 3px 10px;
+  background: #bf8383;
+}
+
+.delete-feedback:hover {
+  background: #ac4949;
 }
 

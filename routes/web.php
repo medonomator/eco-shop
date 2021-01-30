@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ShoppingCart;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PerosonalPageController;
+use App\Http\Controllers\FeedbacksProductController;
 
 // Artisan::call('migrate');
 /*
@@ -23,8 +24,8 @@ use App\Http\Controllers\PerosonalPageController;
 
 Route::get('/', [ProductController::class, 'index'])->name('home');
 
-Route::get('/product/{id}', [ProductController::class, 'show']);
-Route::get('/category/{categoryId}', [CategoryController::class, 'show']);
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('productById');
+Route::get('/category/{categoryId}', [CategoryController::class, 'show'])->name('categoryById');
 
 Route::get('/articles', function () {
     return view('articles');
@@ -36,17 +37,20 @@ Route::get('/greenway', function () {
 
 Route::get('/contacts', function () {
     return view('contacts');
-});
+})->name('contacts');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/shopping-cart', [ShoppingCart::class, 'getProductsForShoppingCart'])->name('shopping-cart');
     Route::get('/add-shopping-cart/{goodId}/{quantity}', [ShoppingCart::class, 'addShoppingCart']);    
-    Route::get('/delete-item-shopping-cart/{goodId}', [ShoppingCart::class, 'deleteItem']);    
-    Route::get('/clear-shopping-cart', [ShoppingCart::class, 'clearShoppingCart']);    
-    Route::post('/place-order', [ShoppingCart::class, 'placeOrder']);    
+    Route::get('/delete-item-shopping-cart/{goodId}', [ShoppingCart::class, 'deleteItem'])->name('delete-item-shopping-cart');    
+    Route::get('/clear-shopping-cart', [ShoppingCart::class, 'clearShoppingCart'])->name('clear-shopping-cart');    
+    Route::post('/place-order', [ShoppingCart::class, 'placeOrder'])->name('place-order');    
     Route::get('/return-page', [ShoppingCart::class, 'returnPage']); 
     Route::get('/personal', [PerosonalPageController::class, 'index'])->name('personal');
     Route::get('/personal/orders', [PerosonalPageController::class, 'showOrders'])->name('personal-orders');
+    Route::post('/personal/change', [PerosonalPageController::class, 'personalChange'])->name('personal-change');
+    Route::post('/send-review', [FeedbacksProductController::class, 'store'])->name('send-review');
+    Route::get('/delete-feedback/{clientId}/{feedbackId}', [FeedbacksProductController::class, 'destroy'])->name('delete-feedback');
 });
 
 Route::get('/login', function () {
@@ -75,18 +79,18 @@ Route::post('/admin-login', [AdminController::class, 'authenticate']);
 Route::get('/admin-logout', [AdminController::class, 'adminLogout'])->name('admin-logout');
 
 
-Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::prefix('admin')->group(function () {
-        Route::get('/notes', [NotesController::class, 'index']);
+        Route::get('/notes', [NotesController::class, 'index'])->name('get-notes');
         Route::get('/notes/create', function () {
-            return view('admin.notes-create');
+            return view('admin.notes-create')->name('get-notes-create');
         });
     
-        Route::post('/notes/create', [NotesController::class, 'store']);
-        Route::get('/notes/delete/{id}', [NotesController::class, 'destroy']);
-        Route::put('/notes/update', [NotesController::class, 'update']);
+        Route::post('/notes/create', [NotesController::class, 'store'])->name('post-notes-create');
+        Route::get('/notes/delete/{id}', [NotesController::class, 'destroy'])->name('delete-notes');
+        Route::put('/notes/update', [NotesController::class, 'update'])->name('update-notes');
     });
 });
 

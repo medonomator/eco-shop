@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderProduct;
+use App\Models\Client;
 
 class PerosonalPageController extends Controller
 {
@@ -15,7 +16,6 @@ class PerosonalPageController extends Controller
      */
     public function index(Request $request)
     {
-        
         return view('personal');
     }
 
@@ -31,5 +31,22 @@ class PerosonalPageController extends Controller
         return view('personal-orders', [
             'orders' => $orders 
         ]);
+    }
+
+    /**
+     * The Personal data change
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Responsed
+     */
+    public function personalChange(Request $request)
+    {
+        dd($request->file('image') );
+        if($request->file('image') );
+        $path = $request->file('image')->store('personal');
+
+        // dd(Client::find(auth()->user()->id));
+
+        return view('personal');
     }
 }

@@ -28,7 +28,7 @@
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="{{ asset('img/icons/ms-icon-144x144.png') }}" />
         <meta name="theme-color" content="#ffffff" />
-
+        {{-- <meta name="csrf-token" content="{{ csrf_token() }}">  --}}
         <!-- Chrome, Firefox OS and Opera -->
         <meta name="theme-color" content="#000" />
         <!-- Windows Phone -->
@@ -48,7 +48,7 @@
         <div class="wrapper main-wrapper">
             <div class="top-panel">
                 <div class="logo">
-                    <a href="/">
+                    <a href="{{ route('home') }}">
                         <img src="{{ asset('img/greenway-logo.png') }}" alt="logo" />
                     </a>
                 </div>
@@ -58,7 +58,7 @@
                         <li><a href="/stocks">Акции</a></li>
                         <li><a href="/brands">Бренды</a></li>
                         <li><a href="/blog">Блог</a></li>
-                        <li><a href="/contacts">Контакты</a></li>
+                        <li><a href="{{ route('contacts') }}">Контакты</a></li>
                     </ul>
                 </div>
 
@@ -88,15 +88,15 @@
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
                         
                         <div class="hidden-block">
-                            <a href="/logout">Выйти</a>
-                            <a href="/personal">Личный кабинет</a>
+                            <a href="{{ route('logout') }}">Выйти</a>
+                            <a href="{{ route('personal') }}">Личный кабинет</a>
                         </div>
                     </div>
                 @endauth
                 @guest('web')
                 <div class="sign-in">
-                    <a href="/login">Войти</a>
-                    <a href="/register">Регистрация</a>
+                    <a href="{{ route('login') }}">Войти</a>
+                    <a href="{{ route('register') }}">Регистрация</a>
                 </div>
                 @endguest
 

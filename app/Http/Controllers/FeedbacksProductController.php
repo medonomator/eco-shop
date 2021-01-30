@@ -2,23 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
-use App\Models\ShoppingCart;
 use App\Models\FeedbacksProduct;
+use App\Http\   Requests\FeedbacksProductRequest;
 
-class ProductController extends Controller
+class FeedbacksProductController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        return view('index', [
-            'products' => Product::paginate(15)
-        ]);
+        //
     }
 
     /**
@@ -37,33 +34,34 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FeedbacksProductRequest $request)
     {
-        //
+        FeedbacksProduct::create([
+            'client_id' => auth()->user()->id,
+            'product_id' => $request->productId,
+            'feedback' => $request->feedback 
+        ]);
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show($id)
     {
-        // dd(FeedbacksProduct::getCommentUser($request->id));
-        return view('product', [
-            'product' => Product::find($request->id),
-            'feedbacks' => FeedbacksProduct::getCommentUser($request->id)
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit($id)
     {
         //
     }
@@ -72,10 +70,10 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -83,11 +81,16 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy($clientId, $feedbackId)
     {
-        //
+        if(!auth()->user()->id === (int) $clientId) {
+            return response()->json(['status' => 'Forbidden']);
+        }
+        FeedbacksProduct::destroy($feedbackId);
+  
+        return response()->json(["status" => 'ok']);
     }
 }

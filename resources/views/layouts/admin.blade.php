@@ -13,8 +13,8 @@
         <div class="main-block">
             <div class="left-bar">
                 <ul>
-                    <li><a href="/admin">Home</a></li>
-                    <li><a href="/admin/notes">Заметки</a></li>
+                    <li><a href="{{ route('admin') }}">Home</a></li>
+                    <li><a href="{{ route('get-notes') }}">Заметки</a></li>
                     <li><a href="/admin/articles">Статьи</a></li>
                     <li><a href="/admin/settings">Настройки</a></li>
                 </ul>
@@ -22,9 +22,9 @@
 
             <div class="user-info">
                 <p>{{ Auth::guard('admin')->user()->name }}</p>
-                <a href="{{ url('/admin-logout') }}">Выйти</a>
+                <a href="{{ route('admin-logout') }}">Выйти</a>
                 <br>
-                <a href="{{ url('/') }}">Main</a>
+                <a href="{{ route('home') }}">Main</a>
             </div>
     
             <div class="right-block">@yield('content')</div>

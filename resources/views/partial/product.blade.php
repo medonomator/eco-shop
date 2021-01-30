@@ -1,5 +1,5 @@
 <div class="products__item">
-  <a href="{{ url("product/$product->id") }}" >
+  <a href="{{ route('productById', $product->id) }}" >
     <p class="products__item-title">{{$product->title}}</p>  
     <div class="products__item-img">
         <img src={{asset('img/1.jpg')}} alt="alt">

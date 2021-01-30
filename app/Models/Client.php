@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Models\CommentFeedBack;
+use App\Models\FeedbacksProduct;
 
 class Client  extends Authenticatable
 {
@@ -20,6 +22,7 @@ class Client  extends Authenticatable
         'name',
         'email',
         'password',
+        'avatarUrl' 
     ];
 
     /**
@@ -40,4 +43,20 @@ class Client  extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Get the comments from the user.
+     */
+    public function comments()
+    {
+        return $this->hasMany(CommentFeedBack::class, 'comment_id');
+    }
+
+    /**
+     * Get the feedback by prduct from the user.
+     */
+    public function feedbacksByProducts()
+    {
+        return $this->hasMany(FeedbacksProduct::class, 'product_id');
+    }
 }

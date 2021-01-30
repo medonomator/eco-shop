@@ -14,8 +14,22 @@ class CreateFeedbackCommentsTable extends Migration
     public function up()
     {
         Schema::create('feedback_comments', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id')->unsigned();
+            $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('comment_id');
+            $table->string('feedback');
+            $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('client_id')
+                ->references('id')->on('clients')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->foreign('comment_id')
+                ->references('id')->on('feedbacks_product')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

@@ -10,7 +10,8 @@
   <a href="{{ route('personal-orders') }}">Заказы</a>
 </div>
 
-<form class="personal-content">
+<form method="POST" action="{{ route('personal-change') }}" enctype="multipart/form-data" class="personal-content">
+  @csrf
   <div class="form-group">
     <label for="name">Имя</label>
     <input type="text" class="form-control" id="name" aria-describedby="emailHelp" placeholder="Имя">
@@ -19,6 +20,10 @@
     <label for="exampleInputEmail1">Email</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
   </div>
+
+  <label class="form-label" for="customFile">Загрузить файл</label>
+  <input type="file" name="image" class="form-control" id="customFile" />
+
   <button type="submit" class="btn btn-primary">Изменить</button>
 </form>
 

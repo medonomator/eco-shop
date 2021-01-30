@@ -8,12 +8,12 @@
 
 @guest
   Корзина пуста Воспользуйтесь поиском, чтобы найти всё что нужно.
-  Если в корзине были товары – <a href="/login">Войдите</a>, чтобы посмотреть список.  
+  Если в корзине были товары – <a href="{{ route('login') }}">Войдите</a>, чтобы посмотреть список.  
 @endguest
 
 @auth
 
-  <a class="clear-shopping-cart" href="/clear-shopping-cart">Очистить корзину</a>
+  <a class="clear-shopping-cart" href="{{ route('clear-shopping-cart') }}">Очистить корзину</a>
 
   <div class="products-shipping">
     @foreach ($shopCarts as $item)
@@ -25,7 +25,7 @@
           <p class="products-shipping__item-title">{{$item->product->title}}</p>  
           <p class="products-shipping__item-price">Цена: <b>{{$item->product->price ? $item->product->price : $item->product->old_price}}</b></p>
         </a>  
-        <a href="/delete-item-shopping-cart/{{ $item->id }}">
+        <a href="{{ route('delete-item-shopping-cart', $item->id) }}">
           <i class="fa fa-trash-o" aria-hidden="true"></i>
         </a>
       </div>
@@ -36,7 +36,7 @@
     <div class="prepare-order">
       <h2>Оформление заказа</h2>
 
-      <form action="/place-order" method="POST">
+      <form action="{{ route('place-order') }}" method="POST">
         @csrf
         <div class="prepare-order__top">
           <div class="payment">

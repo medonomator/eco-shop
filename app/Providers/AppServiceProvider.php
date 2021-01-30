@@ -28,14 +28,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     { 
-        view()->composer('*', function ($view) {
+        view()->composer('layouts.app', function ($view) {
             if(auth('web')->user()) {
                 $shopCartsCount = ShoppingCart::where('client_id', auth('web')->user()->id)->count();
-                View::share('shopCartsCount', $shopCartsCount);
+                $view->with(['shopCartsCount' => $shopCartsCount]);
             } 
-
+            
             $categoryRepository = new CategoryRepository;
-            View::share('categories', $categoryRepository->getTree());
+            $view->with(['categories' => $categoryRepository->getTree()]);
         });
 
         Blade::directive('datetime', function ($expression) {
