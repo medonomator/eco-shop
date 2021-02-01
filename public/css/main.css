@@ -452,6 +452,7 @@ a {
 .sign-in p,
 .entered p {
   font-size: 15px;
+  text-align: center;
 }
 
 .sign-in .fa-caret-down,
@@ -460,6 +461,12 @@ a {
   right: -18px;
   top: 43px;
   cursor: pointer;
+}
+
+.sign-in .forgot-password,
+.entered .forgot-password {
+  font-size: 13px;
+  color: #4e658b !important;
 }
 
 .default-photo {

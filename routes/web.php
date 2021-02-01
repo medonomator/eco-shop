@@ -47,6 +47,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/place-order', [ShoppingCart::class, 'placeOrder'])->name('place-order');    
     Route::get('/return-page', [ShoppingCart::class, 'returnPage']); 
     Route::get('/personal', [PerosonalPageController::class, 'index'])->name('personal');
+    Route::get('/cancel-order/{orderId}', [PerosonalPageController::class, 'cancelOrder'])->name('cancel-order');
     Route::get('/personal/orders', [PerosonalPageController::class, 'showOrders'])->name('personal-orders');
     Route::post('/personal/change', [PerosonalPageController::class, 'personalChange'])->name('personal-change');
     Route::post('/send-review', [FeedbacksProductController::class, 'store'])->name('send-review');
@@ -66,6 +67,11 @@ Route::get('/register', function () {
 
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/register', [LoginController::class, 'clientRegister']);
+Route::post('/send-email-reset-password', [LoginController::class, 'sendEmailresetPassword'])->name('sendEmailresetPassword');
+// Route::get('/forgot-password', [LoginController::class, 'forgotPassword'])->name('forgot-password');
+Route::get('/forgot-password', function () {
+    return view('auth.passwords.email');
+})->name('forgot-password');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/admin-login', function () {

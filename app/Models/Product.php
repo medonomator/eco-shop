@@ -18,4 +18,9 @@ class Product extends Model
     {
         return $this->hasMany(FeedbacksProduct::class, 'product_id');
     }
+
+    public function scopeBestPrice($query)
+    {
+        return $query->where('price', '>', 300);
+    }
 }

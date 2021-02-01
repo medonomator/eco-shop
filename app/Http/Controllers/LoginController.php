@@ -24,9 +24,10 @@ class LoginController extends Controller
             return view('index', [
                 'products' => Product::paginate(15)
             ]);
-        } 
-        
-        return redirect('login')->with('error', 'Invalid username or password');    
+        }
+
+        return redirect('login')->with('error', 'Invalid username or password');
+
     }
 
     /**
@@ -39,6 +40,19 @@ class LoginController extends Controller
         Auth::guard('web')->logout();
         $sessionKey = auth()->guard('web')->getName();
         $request->session()->forget($sessionKey);
+        return redirect('/');
+    }
+
+    /**
+     * Reset Password
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function sendEmailresetPassword(Request $request)
+    {
+        dd($request->email);
+        //
+
         return redirect('/');
     }
 

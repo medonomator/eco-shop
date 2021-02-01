@@ -24,9 +24,13 @@
   margin-top: 30px;
 }
 
+.orders-header ul {
+  text-transform: capitalize;
+}
+
 .orders ul {
   display: flex;
-  text-transform: capitalize;
+  text-transform: lowercase;
 }
 
 .orders li {
@@ -82,5 +86,76 @@
 .orders__cancel:hover {
   background: green;
   color: white !important;
+}
+
+.btn-primary {
+  margin-top: 20px;
+}
+
+.avatar-file {
+  padding: 8px 10px;
+  background: purple;
+  width: 150px;
+  text-align: center;
+}
+
+.avatar-file:hover {
+  background: #a342a3;
+}
+
+.form-control {
+  color: black;
+}
+
+.main-product {
+  position: relative;
+}
+
+.main-product .child-product {
+  display: flex;
+  flex-flow: wrap;
+  position: absolute;
+  left: 50px;
+  top: 50px;
+  flex: 1;
+  background: #e2e2e2;
+}
+
+.main-product .child-product ul {
+  width: 600px;
+}
+
+.main-product .child-product li:nth-child(1) {
+  width: 150px;
+}
+
+.cancel-popup {
+  position: fixed;
+  top: 40%;
+  width: 400px;
+  height: 150px;
+  padding: 0 10px;
+  left: 40%;
+  background: white;
+  border: 1px solid silver;
+  border-radius: 4px;
+  text-align: center;
+  display: none;
+}
+
+.cancel-popup h2 {
+  width: 400px;
+}
+
+.cancel-popup a,
+.cancel-popup button {
+  display: inline;
+  margin-right: 30px;
+  padding: 5px 30px;
+}
+
+.cancel-popup a {
+  padding-top: 6px;
+  padding-bottom: 6px;
 }
 

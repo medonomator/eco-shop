@@ -1,5 +1,5 @@
-@extends('errors::minimal')
+@extends('layouts.app') @section('content')
 
-@section('title', __('Forbidden'))
-@section('code', '403')
-@section('message', __($exception->getMessage() ?: 'Forbidden'))
+<h1 class="page-not-found">Forbidden</h1>
+
+@endsection

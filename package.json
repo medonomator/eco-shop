@@ -9,7 +9,9 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
         "seed:user": "php artisan db:seed --class=UserSeeder",
-        "dump": "composer dump-autoload"
+        "dump": "composer dump-autoload && php artisan cache:clear && php artisan config:clear",
+        "storage:link": "php artisan storage:link",
+        "clear:cache": "php artisan cache:clear && php artisan config:clear"
     },
     "devDependencies": {
         "axios": "^0.19",

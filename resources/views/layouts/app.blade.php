@@ -42,6 +42,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         @stack('styles')
+        <script src={{ asset('libs/jquery/jquery.min.js') }}></script>
     </head>
 
     <body>
@@ -80,9 +81,14 @@
                 </a>
 
                 @auth('web')
+                    @php
+                        $avatarUrl = Storage::url(Auth::user()->avatarUrl);
+                        $defaultAvatar = Storage::url('default-avatar.jpeg');
+                        $isAvatar = Auth::user()->avatarUrl;
+                    @endphp
                     <div class="entered">
-                        <div class="default-photo">
-                            <img src="{{ asset('img/default-photo.png') }}" alt="alt">
+                        <div style="width: {{ $isAvatar ? '60px' : '30px' }}" class="default-photo">
+                            <img src="{{ $isAvatar ?  $avatarUrl : $defaultAvatar }}" alt="alt">
                         </div>
                         <p>{{ Auth::user()->name }}</p>
                         <i class="fa fa-caret-down" aria-hidden="true"></i>
@@ -97,6 +103,7 @@
                 <div class="sign-in">
                     <a href="{{ route('login') }}">Войти</a>
                     <a href="{{ route('register') }}">Регистрация</a>
+                    <a class="forgot-password" href="{{ route('forgot-password') }}">Забыли пароль ?</a>
                 </div>
                 @endguest
 
@@ -134,9 +141,9 @@
                 Footer
             </div>
         </footer>
-        <script src={{ asset('libs/jquery/jquery.min.js') }}></script>
-        <!-- jQuery Modal -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        
+        {{-- <!-- jQuery Modal -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script> --}}
         <script src="{{ asset('js/common.js') }}"></script>
         <script>
             if ( window.history.replaceState ) {

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/eco-shop.iml" filepath="$PROJECT_DIR$/.idea/eco-shop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../envybox-erp/.idea/envybox-erp.iml" filepath="$PROJECT_DIR$/../envybox-erp/.idea/envybox-erp.iml" />
+    </modules>
+  </component>
+</project>

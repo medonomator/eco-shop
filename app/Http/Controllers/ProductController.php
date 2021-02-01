@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PasswordRecovery;
+use App\Models\Product;
 use App\Models\ShoppingCart;
 use App\Models\FeedbacksProduct;
 
@@ -16,8 +18,19 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
+        $details = [
+            'title' => 'title',
+            'body' => 'body'
+        ];
+
+
+        $array = array('apple', 'banana', 'coconut', 'dates');
+        // Усечение до трех элементов
+       
+        // Mail::to('budteschastlivi1@gmail.com')->send(new PasswordRecovery($details));
         return view('index', [
-            'products' => Product::paginate(15)
+            'products' => Product::paginate(15),
+
         ]);
     }
 
